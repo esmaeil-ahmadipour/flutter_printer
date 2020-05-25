@@ -12,15 +12,16 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home'),),
-      body: Center(
-        child: IconButton(
-          icon: const Icon(Icons.print),
-//          onPressed: _printDocument,
-          onPressed: _printWeb,
+        appBar: AppBar(
+          title: Text('Home'),
         ),
-      )
-    );
+        body: Center(
+          child: IconButton(
+            icon: const Icon(Icons.print),
+//          onPressed: _printDocument,
+            onPressed: _printWeb,
+          ),
+        ));
   }
 
   void _printDocument() {
@@ -44,8 +45,16 @@ class _MyHomePageState extends State<MyHomePage> {
   void _printWeb() {
     Printing.layoutPdf(
         onLayout: (PdfPageFormat format) async => await Printing.convertHtml(
-          format: format,
-          html: '<html><html><body><h2>Basic HTML Table</h2><table style="width:100%"><tr><th>Firstname</th><th>Lastname</th> <th>Age</th></tr><tr><td>Jill</td><td>Smith</td><td>50</td></tr><tr><td>Eve</td><td>Jackson</td><td>94</td></tr><tr><td>John</td><td>Doe</td><td>80</td></tr></table></body></html>',
-        ));
+              format: format,
+              baseUrl: 'https://i.ibb.co/6JwzHLD/',
+              html:
+                  '<html><html><body><h2>جدول تحت وب</h2><table style="width:100%"><tr>'
+                  '<th>نام</th><th>نام خانوادگی</th> <th>سن</th></tr><tr>'
+                  '<img src="repository-flutter-digikalla-Ui.jpg" style="width:200px;height:100px;">'
+                  '<td>علی</td>'
+                  '<td>رضایی</td>'
+                  '<td>50</td>'
+                  '</tr><tr><td>مهرداد</td><td>احمدی</td><td>32</td></tr><tr><td>حسن</td><td>رضایی</td><td>52</td></tr></table></body></html>',
+            ));
   }
 }
